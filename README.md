@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+## 1. React create-react-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 함수형 컴포넌트 사용
+- css-in-js 라이브러리 style-component 백틱 형식 사용 (vscode 확장팩 vscode-styled-components(자동코드), Styled-Components Extractor(emmet 형식으로 사용가능))
+- Carousel 라이브러리 react-slick 사용
 
-## Available Scripts
+## 2. src 폴더
 
-In the project directory, you can run:
+# components 폴더 ( 공통 컴포넌트 폴더 import 하여 재사용)
 
-### `npm start`
+- Button.jsx, ScrollTop.jsx
+- ProductItem.jsx, ProductDetail.jsx, ProductList.jsx (상품 리스트, 상품 세부페이지, 상품카드)
+- Header.jsx, Footer.jsx
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# page 폴더
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    1.  main 폴더
+    - MainHome.jsx 메인홈페이지 레이아웃
+    - HeroBanner.jsx 메인홈 최상단 슬라이드
+    - MainBestSeller.jsx 베스트셀러 아이템
 
-### `npm test`
+# style 폴더
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    1. GrobalStyle.jsx 전역 style 적용
 
-### `npm run build`
+# util 폴더
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    1. MediaQurey.jsx 미디어쿼리 분리 관리
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 3. style-components 규칙
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+공통 레이아웃
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<Header />
+    <Main>
+    </Main>
+<Footer />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Section - section 태그 컴포넌트 (한페이지 안에 내용이 달라지는 부분이 있을 때 사용)
+Container - width 사이즈 공통으로 정해진 div 태그 컴포넌트 (필수조건은 아님)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+~ Wrap: 단일 요소의 레이아웃을 위함
+Top: Wrap안에서의 Top
+Left: Wrap안에서의 Left
+Right: Wrap안에서의 Right
+Bottom: Wrap안에서의 Bottom
+~ Box: Wrap안에서의 Top Bottom Left Right 안에서 요소
+Item: 프론트 데이터가 들어가면 중복되는 요소들
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+사용자 입력태그들은 뒤에 그대로 붙여주는걸로
+Input: input 태그
+Label: label 태그
+Select: select 태그
+Radio: radio 태그
+...
