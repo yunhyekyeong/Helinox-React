@@ -23,7 +23,8 @@
 
 ## style 폴더
 
-    1. GrobalStyle.jsx 전역 style 적용
+    1. GrobalStyle.jsx 전역 reset style (styled-components createGlobalStyle) 적용
+    1. theme.jsx 전역 common style (styled-components ThemeProvider) 적용
 
 ## util 폴더
 
