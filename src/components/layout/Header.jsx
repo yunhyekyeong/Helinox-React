@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/img/logo/logo_white.png";
+import { mediaMax } from "../../util/MediaQurey";
+import { BsFillTelephoneFill } from "react-icons/bs";
 
 function Header() {
   return (
@@ -19,9 +21,9 @@ function Header() {
           <li>
             <Link to="#!">MyPage</Link>
           </li>
-          <li>
+          <Cart>
             <Link to="#!">Cart</Link>
-          </li>
+          </Cart>
           <li>
             <Link to="#!">Login</Link>
           </li>
@@ -29,11 +31,59 @@ function Header() {
             <Link to="#!">Join</Link>
           </li>
         </RightWrap>
+        <MOpen>
+          <span></span>
+          <span></span>
+          <span></span>
+        </MOpen>
       </Top>
       <NAV>
+        <MLog>
+          {/* 로그인 */}
+          <li>
+            <p>
+              <span>Helinox</span>
+              <br /> 방문을 환영합니다!
+            </p>
+            <LogBtn>
+              <Link to="#!">로그인</Link>
+              <Link to="#!">회원가입</Link>
+            </LogBtn>
+          </li>
+          {/* 로그아웃 */}
+          {/* <li>
+            <p>
+              <span>윤혜경</span>님
+              <br />
+              방문을 환영합니다!
+            </p>
+            <LogBtn>
+              <Link to="#!">마이페이지</Link>
+              <Link to="#!">로그아웃</Link>
+            </LogBtn>
+          </li> */}
+          <CS>
+            <ul>
+              <li>
+                <a href="tel:02-730-1928">
+                  <span>
+                    <BsFillTelephoneFill />
+                  </span>
+                  <strong>02-730-1928</strong>
+                </a>
+              </li>
+              <li>
+                <strong>평일</strong> 10:00 ~ 16:00 (주말, 공휴일 휴무)
+              </li>
+              <li>
+                <strong>점심</strong> 12:00 ~ 13:00
+              </li>
+            </ul>
+          </CS>
+        </MLog>
         <GNB>
           <GNBItem>
-            <Link to="#!">Outdoor</Link>
+            <GNBMenu>Outdoor</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">체어</Link>
@@ -59,7 +109,7 @@ function Header() {
             </LNB>
           </GNBItem>
           <GNBItem>
-            <Link to="#!">Home</Link>
+            <GNBMenu>Home</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">체어</Link>
@@ -73,7 +123,7 @@ function Header() {
             </LNB>
           </GNBItem>
           <GNBItem>
-            <Link to="#!">Tactical</Link>
+            <GNBMenu>Tactical</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">체어</Link>
@@ -99,7 +149,7 @@ function Header() {
             </LNB>
           </GNBItem>
           <GNBItem>
-            <Link to="#!">Accessories</Link>
+            <GNBMenu>Accessories</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">택티컬 필드 오피스 M 악세서리</Link>
@@ -128,7 +178,7 @@ function Header() {
             </LNB>
           </GNBItem>
           <GNBItem>
-            <Link to="#!">Special/Limited</Link>
+            <GNBMenu>Special/Limited</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">Leica x Helinox</Link>
@@ -160,7 +210,7 @@ function Header() {
             </LNB>
           </GNBItem>
           <GNBItem>
-            <Link to="#!">T.E.R.G</Link>
+            <GNBMenu>T.E.R.G</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">백팩&멀티백</Link>
@@ -183,7 +233,7 @@ function Header() {
             </LNB>
           </GNBItem>
           <GNBItem>
-            <Link to="#!">+Information</Link>
+            <GNBMenu>+Information</GNBMenu>
             <LNB>
               <LNBItem>
                 <Link to="#!">Our story</Link>
@@ -216,15 +266,23 @@ function Header() {
 
 export default Header;
 
-const HeaderWrap = styled.header``;
+const HeaderWrap = styled.header`
+  ${mediaMax.md} {
+    width: 100%;
+    position: fixed;
+    top: 0;
+  }
+`;
+
+// 상단
 const Top = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${({ theme }) => theme.common.flexBtween};
+  width: 100%;
   height: 60px;
-  background-color: #000;
-  color: #fff;
-  padding: 0 50px;
+  background-color: ${({ theme }) => theme.colors.pointcolor};
+  color: ${({ theme }) => theme.colors.bkgcolor};
+  padding: 0 16px;
+  position: relative;
 `;
 
 const Logo = styled.div`
@@ -233,9 +291,15 @@ const Logo = styled.div`
     width: 100%;
   }
 `;
+
 const RightWrap = styled.ul`
   display: flex;
+  ${mediaMax.md} {
+    display: none;
+  }
   li {
+    cursor: pointer;
+    ${({ theme }) => theme.fontSize.lgfont};
     margin-right: 30px;
     &:last-child {
       margin-right: 0;
@@ -243,56 +307,230 @@ const RightWrap = styled.ul`
   }
 `;
 
+const Cart = styled.li`
+  position: relative;
+  &:after {
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+  }
+`;
+
+// 모바일 메뉴오픈
+const MOpen = styled.div`
+  display: none;
+  ${mediaMax.md} {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 50px;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+  }
+  ${mediaMax.sm} {
+    right: 16px;
+  }
+  /* 막대 */
+  & > span {
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    background-color: ${({ theme }) => theme.colors.bkgcolor};
+    position: absolute;
+    &:nth-of-type(1) {
+      top: 0;
+    }
+    &:nth-of-type(2) {
+      top: 9px;
+    }
+    &:nth-of-type(3) {
+      top: 18px;
+    }
+  }
+`;
+
+// 모바일 로그
+const MLog = styled.ul`
+  display: none;
+  ${mediaMax.md} {
+    display: block;
+    padding: 16px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
+    p {
+      line-height: 1.3;
+      margin-bottom: 10px;
+      span {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+`;
+
+const LogBtn = styled.div`
+  ${({ theme }) => theme.common.flexBtween}
+  gap: 10px;
+  a {
+    text-align: center;
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 16px;
+    &:nth-of-type(1) {
+      background-color: ${({ theme }) => theme.colors.pointcolor};
+      color: ${({ theme }) => theme.colors.bkgcolor};
+    }
+    &:nth-of-type(2) {
+      border: 1px solid ${({ theme }) => theme.colors.lightgray};
+    }
+  }
+`;
+
+// 모바일 cs 전화번호
+const CS = styled.li`
+  margin-top: 16px;
+  ul {
+    & > li {
+      font-weight: 400;
+      line-height: 1.7;
+      strong {
+        font-weight: 600;
+      }
+      span {
+        font-size: 10px;
+        background-color: ${({ theme }) => theme.colors.pointcolor};
+        color: ${({ theme }) => theme.colors.bkgcolor};
+        padding: 5px 6px;
+        border-radius: 50%;
+        margin-right: 6px;
+      }
+    }
+  }
+`;
+
+// 하단 메뉴
 const NAV = styled.nav`
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
   padding: 0 50px;
+  ${mediaMax.md} {
+    width: 50vw;
+    height: 100vh;
+    padding: 0 0;
+    position: fixed;
+    top: 60px;
+    border-right: 1px solid ${({ theme }) => theme.colors.brightgray};
+    border-bottom: none;
+  }
+  ${mediaMax.sm} {
+    width: 80vw;
+  }
+  ${mediaMax.xsm} {
+    width: 100vw;
+  }
 `;
 const GNB = styled.ul`
   display: flex;
+  ${mediaMax.md} {
+    flex-direction: column;
+  }
 `;
 const GNBItem = styled.li`
+  ${({ theme }) => theme.common.flexLeft};
   position: relative;
-  display: flex;
-  align-items: center;
   height: 40px;
-  font-size: 18px;
-  font-weight: 500;
   margin-right: 40px;
+  ${({ theme }) => theme.fontSize.lgfont};
+  font-weight: 500;
   cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
   &:hover {
+    &::after {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: ${({ theme }) => theme.colors.pointcolor};
+      transition: 0.3s;
+    }
+    /* LNB 공통 */
     & > ul {
       display: block;
     }
   }
-  &:last-child {
+
+  ${mediaMax.md} {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0 0;
     margin-right: 0;
   }
 `;
+
+const GNBMenu = styled.span`
+  ${mediaMax.md} {
+    ${({ theme }) => theme.common.flexLeft};
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
+  }
+`;
+
 const LNB = styled.ul`
   display: none;
   position: absolute;
-  top: 41px;
-  left: -4px;
+  top: 40px;
+  left: 0;
   width: 220px;
-  border-left: 1px solid #eee;
-  border-right: 1px solid #eee;
+  border-top: 1px solid ${({ theme }) => theme.colors.brightgray};
+  border-left: 1px solid ${({ theme }) => theme.colors.brightgray};
+  border-right: 1px solid ${({ theme }) => theme.colors.brightgray};
+
+  ${mediaMax.md} {
+    position: static;
+    width: 100%;
+    background-color: ${({ theme }) => theme.colors.brightgray};
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
 `;
 const LNBItem = styled.li`
   width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-  line-height: 1.8;
+  background-color: ${({ theme }) => theme.colors.bkgcolor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
+  line-height: 2;
   cursor: pointer;
-
   &:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: ${({ theme }) => theme.colors.pointcolor};
+    color: ${({ theme }) => theme.colors.bkgcolor};
   }
+  /* Link */
   a {
     display: block;
     width: 100%;
-    font-size: 16px;
+    ${({ theme }) => theme.fontSize.mdfont};
     font-weight: 400;
     padding: 0 10px;
+  }
+
+  ${mediaMax.md} {
+    border-bottom: none;
+    background-color: ${({ theme }) => theme.colors.brightgray};
+    line-height: 2.5;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.brightgray};
+      color: ${({ theme }) => theme.colors.pointcolor};
+    }
+    /* Link */
+    a {
+      ${({ theme }) => theme.fontSize.mdfont};
+      padding: 0 16px;
+    }
   }
 `;
