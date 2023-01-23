@@ -4,6 +4,8 @@ import styled from "styled-components";
 import logo from "../../assets/img/logo/logo_white.png";
 import { mediaMax } from "../../util/MediaQurey";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { FiSearch } from "react-icons/fi";
+import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
   return (
@@ -15,27 +17,35 @@ function Header() {
           </Link>
         </Logo>
         <RightWrap>
-          <li>
-            <Link to="#!">Search</Link>
-          </li>
-          <li>
+          <WebLog>
+            <Link to="#!">로그인</Link>
+          </WebLog>
+          {/* <WebLog>
+            <Link to="#!">로그아웃</Link>
+          </WebLog> */}
+          <WebLog>
+            <Link to="#!">회원가입</Link>
+          </WebLog>
+          {/* <WebLog>
             <Link to="#!">MyPage</Link>
-          </li>
-          <Cart>
-            <Link to="#!">Cart</Link>
-          </Cart>
+          </WebLog> */}
           <li>
-            <Link to="#!">Login</Link>
+            <Link to="#!">
+              <FiSearch />
+            </Link>
           </li>
           <li>
-            <Link to="#!">Join</Link>
+            <Link to="#!">
+              <FaShoppingCart />
+            </Link>
+            <Cart>30</Cart>
           </li>
+          <MOpen>
+            <span></span>
+            <span></span>
+            <span></span>
+          </MOpen>
         </RightWrap>
-        <MOpen>
-          <span></span>
-          <span></span>
-          <span></span>
-        </MOpen>
       </Top>
       <NAV>
         <MLog>
@@ -267,11 +277,10 @@ function Header() {
 export default Header;
 
 const HeaderWrap = styled.header`
-  ${mediaMax.md} {
-    width: 100%;
-    position: fixed;
-    top: 0;
-  }
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 `;
 
 // 상단
@@ -281,12 +290,18 @@ const Top = styled.div`
   height: 60px;
   background-color: ${({ theme }) => theme.colors.pointcolor};
   color: ${({ theme }) => theme.colors.bkgcolor};
-  padding: 0 16px;
+  padding: 0 50px;
   position: relative;
+  ${mediaMax.md} {
+    padding: 0 16px;
+  }
 `;
 
-const Logo = styled.div`
+const Logo = styled.h1`
   width: 130px;
+  ${mediaMax.xsm} {
+    width: 100px;
+  }
   img {
     width: 100%;
   }
@@ -294,38 +309,61 @@ const Logo = styled.div`
 
 const RightWrap = styled.ul`
   display: flex;
-  ${mediaMax.md} {
-    display: none;
-  }
   li {
+    ${({ theme }) => theme.common.flexCenter};
+    ${({ theme }) => theme.fontSize.mdfont};
+    position: relative;
     cursor: pointer;
-    ${({ theme }) => theme.fontSize.lgfont};
     margin-right: 30px;
+    ${mediaMax.sm} {
+      margin-right: 16px;
+    }
+    ${mediaMax.xsm} {
+      margin-right: 12px;
+    }
+
     &:last-child {
       margin-right: 0;
+      ${mediaMax.sm} {
+        margin-left: 16px;
+      }
+      ${mediaMax.xsm} {
+        margin-left: 12px;
+      }
     }
+  }
+  svg {
+    font-size: 20px;
   }
 `;
 
-const Cart = styled.li`
-  position: relative;
-  &:after {
-    top: 0;
-    right: 0;
-    width: 50px;
-    height: 20px;
-    border-radius: 20px;
+const WebLog = styled.li`
+  ${mediaMax.md} {
+    display: none !important;
   }
+`;
+
+const Cart = styled.span`
+  /* position: absolute;
+  top: 0;
+  right: -25px; */
+  padding: 3px 5px;
+  border-radius: 20px;
+  background-color: #ff7300;
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.bkgcolor};
+  text-align: center;
+  margin-left: 4px;
 `;
 
 // 모바일 메뉴오픈
-const MOpen = styled.div`
+const MOpen = styled.li`
   display: none;
   ${mediaMax.md} {
     display: block;
-    position: fixed;
-    top: 20px;
-    right: 50px;
+    position: relative;
+    justify-content: flex-end !important;
     width: 25px;
     height: 20px;
     cursor: pointer;
@@ -413,8 +451,10 @@ const CS = styled.li`
 // 하단 메뉴
 const NAV = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
+  background-color: ${({ theme }) => theme.colors.bkgcolor};
   padding: 0 50px;
   ${mediaMax.md} {
+    display: none;
     width: 50vw;
     height: 100vh;
     padding: 0 0;
@@ -486,6 +526,7 @@ const LNB = styled.ul`
   position: absolute;
   top: 40px;
   left: 0;
+  z-index: 99;
   width: 220px;
   border-top: 1px solid ${({ theme }) => theme.colors.brightgray};
   border-left: 1px solid ${({ theme }) => theme.colors.brightgray};
