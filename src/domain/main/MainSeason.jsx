@@ -42,7 +42,7 @@ function MainSeason() {
     setPagingSlick(pagingSlickRef.current);
   }, []);
   return (
-    <Section>
+    <SeasoSection>
       <Container>
         <SeasonWrap>
           <div>
@@ -91,11 +91,15 @@ function MainSeason() {
           </Left>
         </SeasonWrap>
       </Container>
-    </Section>
+    </SeasoSection>
   );
 }
 
 export default MainSeason;
+
+const SeasoSection = styled(Section)`
+  margin: 100px, 0 0 0;
+`;
 
 const SeasonWrap = styled.div`
   ${({ theme }) => theme.common.flexBtween}

@@ -26,7 +26,6 @@ export default SpecialBanner;
 
 const SpecialSection = styled(Section)`
   position: relative;
-  margin: 0 0;
   width: 100%;
   height: 400px;
   background: url(${specialbkg}) no-repeat center center/cover;
