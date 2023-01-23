@@ -1,7 +1,8 @@
 const breakpoints = {
   xsm: "320px",
   sm: "425px",
-  md: "768px",
+  // 아이패드 에어
+  md: "820px",
   lg: "1024px",
   xlg: "1280px",
   xxlg: "1440px",
