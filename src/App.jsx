@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import GlobalStyle from "./style/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./style/theme";
+import { mediaMax } from "./util/MediaQurey";
 
 function App() {
   // 모바일 브라우저 100vh
@@ -35,4 +36,9 @@ function App() {
 
 export default App;
 
-const Main = styled.main``;
+const Main = styled.main`
+  margin-top: 100px;
+  ${mediaMax.md} {
+    margin-top: 60px;
+  }
+`;
