@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import MainHome from "./page/main/MainHome";
+import MainHome from "./page/main/MainHomePage";
 import { Routes, Route } from "react-router-dom";
 import GlobalStyle from "./style/GlobalStyle";
 import { ThemeProvider } from "styled-components";
