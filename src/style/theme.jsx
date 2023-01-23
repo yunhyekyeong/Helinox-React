@@ -35,7 +35,7 @@ const common = {
   flexCenter: `
     display:flex;
     justify-content: center;
-    lign-items: center;
+    align-items: center;
     `,
   flexBtween: `
     display:flex;
