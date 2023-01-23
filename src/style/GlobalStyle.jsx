@@ -107,6 +107,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1;
     min-height: 100vh;
     min-height: calc(var(--vh) * 100);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(
+      safe-area-inset-bottom) env(safe-area-inset-left);
     }
     ol,
     ul,
@@ -148,9 +150,39 @@ const GlobalStyle = createGlobalStyle`
         background: inherit;
         padding: 0;
     }
-
-    /* font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+   
+    //슬라이드 버튼 초기화
+    .slick-next:before,
+    .slick-prev:before {
+        display: none;
+    }
+    .slick-prev,
+    .slick-next {
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: inherit;
+        height: inherit;
+        padding: 0;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: inherit;
+        border: none;
+        outline: none;
+        background: inherit;
+        z-index: 99;
+    }
+    .slick-prev:hover,
+    .slick-next:hover {
+        width: inherit;
+        height: inherit;
+        color: inherit;
+        background: inherit;
+    }
 `;
 
 export default GlobalStyle;
