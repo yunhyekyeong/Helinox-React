@@ -1,6 +1,6 @@
 import React from "react";
-import HeroBanner from "./HeroBanner";
-import MainSeason from "./MainSeason";
+import HeroBanner from "../../domain/main/HeroBanner";
+import MainSeason from "../../domain/main/MainSeason";
 
 function MainHome() {
   return (
