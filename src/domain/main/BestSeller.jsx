@@ -13,18 +13,18 @@ function BestSeller() {
         </BestTxt>
         <Container>
           <BestSellerWrap>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
-            <BestProductItem></BestProductItem>
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
+            <BestProductItem />
           </BestSellerWrap>
         </Container>
       </BestSelSection>
@@ -38,7 +38,7 @@ const BestSelSection = styled(Section)`
   margin: 0 0;
 `;
 
-const BestSellerWrap = styled.ul`
+const BestSellerWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;

@@ -3,26 +3,19 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsCartPlus } from "react-icons/bs";
+import { mediaMax } from "../../util/MediaQurey";
 import best01 from "../../assets/img/product/best01.jpg";
-import best02 from "../../assets/img/product/best02.jpg";
-import best03 from "../../assets/img/product/best03.jpg";
-import best04 from "../../assets/img/product/best04.jpg";
-import best05 from "../../assets/img/product/best05.jpg";
-import best06 from "../../assets/img/product/best06.jpg";
-import best07 from "../../assets/img/product/best07.jpg";
-import best08 from "../../assets/img/product/best08.jpg";
 
 function BestProductItem() {
   return (
     <BestProduct>
-      <BestNum>1</BestNum>
       <Link to="">
         <BestImg>
           <img src={best01} alt="" />
         </BestImg>
       </Link>
       <Caption>
-        <ProductName>블랙메쉬 슬링백</ProductName>
+        <ProductName>비취타올(아이보리/블랙)</ProductName>
         <ProductInfo>
           <ProductPrice>
             <strong>50,000</strong>원
@@ -45,36 +38,72 @@ function BestProductItem() {
 
 export default BestProductItem;
 
-const BestProduct = styled.li`
+const BestProduct = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.lightgray};
+  border-radius: 6px;
+  position: relative;
   overflow: hidden;
+  height: 312.5px;
+  ${mediaMax.xlg} {
+    height: 360px;
+  }
+  ${mediaMax.lg} {
+    height: 300px;
+  }
+  ${mediaMax.md} {
+    height: auto;
+    border: none;
+  }
+
+  /* 숫자카운트 */
+  &:after {
+    ${({ theme }) => theme.common.flexCenter};
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px 0 6px 0;
+    background-color: ${({ theme }) => theme.colors.pointcolor};
+    color: ${({ theme }) => theme.colors.bkgcolor};
+    counter-increment: numbering;
+    content: counter(numbering);
+    ${mediaMax.sm} {
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
+    }
+    ${mediaMax.xsm} {
+      width: 30px;
+      height: 30px;
+    }
+  }
 
   &:hover {
     & > div {
       bottom: 0;
-      transition: 0.4s;
     }
   }
-`;
-
-const BestNum = styled.span`
-  ${({ theme }) => theme.common.flexCenter};
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 40px;
-  height: 40px;
-  background-color: ${({ theme }) => theme.colors.pointcolor};
-  color: ${({ theme }) => theme.colors.bkgcolor};
-  border-radius: 0 0 24px 0;
 `;
 
 const BestImg = styled.figure`
   width: 100%;
   height: 100%;
+  ${mediaMax.md} {
+    height: 230px;
+    border: 1px solid ${({ theme }) => theme.colors.lightgray};
+    border-radius: 6px;
+  }
+  ${mediaMax.sm} {
+    height: 160px;
+  }
+  ${mediaMax.xsm} {
+    height: 240px;
+  }
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 `;
 
@@ -86,6 +115,13 @@ const Caption = styled.div`
   height: 80px;
   padding: 16px;
   color: ${({ theme }) => theme.colors.bkgcolor};
+  transition: 0.4s;
+  ${mediaMax.md} {
+    position: static;
+    height: auto;
+    color: ${({ theme }) => theme.colors.pointcolor};
+    padding: 10px;
+  }
   &::before {
     content: "";
     display: block;
@@ -97,14 +133,21 @@ const Caption = styled.div`
     left: 0;
     transform: translateY(-50%);
     z-index: -1;
+    ${mediaMax.md} {
+      display: none;
+    }
   }
 `;
 
 const ProductName = styled.div`
   ${({ theme }) => theme.common.flexLeft};
-  ${({ theme }) => theme.fontSize.lgfont};
+  ${({ theme }) => theme.fontSize.mdfont};
   font-weight: 600;
   margin-bottom: 10px;
+  word-break: keep-all;
+  ${mediaMax.md} {
+    margin-bottom: 4px;
+  }
 `;
 
 const ProductInfo = styled.div`
@@ -117,7 +160,11 @@ const ProductPrice = styled.span`
   color: ${({ theme }) => theme.colors.brightgray};
   font-weight: 300;
   margin-right: 8px;
+  ${mediaMax.md} {
+    color: ${({ theme }) => theme.colors.pointcolor};
+  }
   strong {
+    ${({ theme }) => theme.fontSize.mdfont};
     font-weight: 300;
   }
 `;

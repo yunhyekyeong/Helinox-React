@@ -6,7 +6,7 @@ const ButtonStyle = {
     text-align: center;
     padding: 5px 15px;
     border-radius: 50%;
-    background: none;
+    background-color: transparent;
   `,
   viewmore: css`
     &:after {
@@ -14,18 +14,28 @@ const ButtonStyle = {
       display: block;
       position: absolute;
       bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      height: 3px;
+      left: 0;
+      width: 130%;
+      height: 4px;
     }
   `,
 };
 
-function Button({ disabled, children, styletype, border, fontsize, background, color, afterbackground }) {
+function Button({ disabled, children, styletype, border, fontsize, background, color, afterbackground, hoverbackground, hovercolor }) {
   const styleType = ButtonStyle[styletype];
   return (
-    <StyleButton type="button" disabled={disabled} styleType={styleType} border={border} fontsize={fontsize} color={color} background={background} afterbackground={afterbackground}>
+    <StyleButton
+      type="button"
+      disabled={disabled}
+      styleType={styleType}
+      border={border}
+      fontsize={fontsize}
+      color={color}
+      background={background}
+      afterbackground={afterbackground}
+      hoverbackground={hoverbackground}
+      hovercolor={hovercolor}
+    >
       {children}
     </StyleButton>
   );

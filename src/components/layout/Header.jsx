@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import logo from "../../assets/img/logo/logo_white.png";
-import { mediaMax } from "../../util/MediaQurey";
+import { mediaMax, mediaMin } from "../../util/MediaQurey";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [accodianOpen, setAccodianOpen] = useState(false);
   return (
     <HeaderWrap>
       <Top>
@@ -40,14 +42,14 @@ function Header() {
             </Link>
             <Cart>30</Cart>
           </li>
-          <MOpen>
+          <MOpen isMove={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>
             <span></span>
             <span></span>
             <span></span>
           </MOpen>
         </RightWrap>
       </Top>
-      <NAV>
+      <NAV isMOpen={mobileOpen}>
         <MLog>
           {/* 로그인 */}
           <li>
@@ -93,8 +95,8 @@ function Header() {
         </MLog>
         <GNB>
           <GNBItem>
-            <GNBMenu>Outdoor</GNBMenu>
-            <LNB>
+            <GNBMenu onClick={() => setAccodianOpen(!accodianOpen)}>Outdoor</GNBMenu>
+            <LNB isAccodianOpen={accodianOpen}>
               <LNBItem>
                 <Link to="#!">체어</Link>
               </LNBItem>
@@ -321,14 +323,18 @@ const RightWrap = styled.ul`
     ${mediaMax.xsm} {
       margin-right: 12px;
     }
-
+    /* cart */
+    &:nth-of-type(4) {
+      ${mediaMin.md} {
+        margin-right: 0;
+      }
+    }
+    /* Mopen */
     &:last-child {
       margin-right: 0;
-      ${mediaMax.sm} {
-        margin-left: 16px;
-      }
-      ${mediaMax.xsm} {
-        margin-left: 12px;
+      display: none;
+      ${mediaMax.md} {
+        display: block;
       }
     }
   }
@@ -359,7 +365,6 @@ const Cart = styled.span`
 
 // 모바일 메뉴오픈
 const MOpen = styled.li`
-  display: none;
   ${mediaMax.md} {
     display: block;
     position: relative;
@@ -367,9 +372,6 @@ const MOpen = styled.li`
     width: 25px;
     height: 20px;
     cursor: pointer;
-  }
-  ${mediaMax.sm} {
-    right: 16px;
   }
   /* 막대 */
   & > span {
@@ -380,13 +382,33 @@ const MOpen = styled.li`
     position: absolute;
     &:nth-of-type(1) {
       top: 0;
+      ${({ isMove }) =>
+        isMove &&
+        css`
+          top: 9px;
+          transform: rotate(135deg);
+        `};
     }
     &:nth-of-type(2) {
       top: 9px;
+      ${({ isMove }) =>
+        isMove &&
+        css`
+          top: 9px;
+          left: 60px;
+          transition: 0.4s;
+        `};
     }
     &:nth-of-type(3) {
       top: 18px;
+      ${({ isMove }) =>
+        isMove &&
+        css`
+          top: 9px;
+          transform: rotate(-135deg);
+        `};
     }
+    transition: 0.4s;
   }
 `;
 
@@ -454,12 +476,19 @@ const NAV = styled.nav`
   background-color: ${({ theme }) => theme.colors.bkgcolor};
   padding: 0 50px;
   ${mediaMax.md} {
-    display: none;
     width: 50vw;
     height: 100vh;
     padding: 0 0;
     position: fixed;
     top: 60px;
+    left: -50vw;
+    transition: 0.4s;
+    ${({ isMOpen }) =>
+      isMOpen &&
+      css`
+        left: 0;
+      `};
+
     border-right: 1px solid ${({ theme }) => theme.colors.brightgray};
     border-bottom: none;
   }
@@ -499,6 +528,9 @@ const GNBItem = styled.li`
     /* LNB 공통 */
     & > ul {
       display: block;
+      ${mediaMax.md} {
+        display: none;
+      }
     }
   }
 
@@ -539,6 +571,11 @@ const LNB = styled.ul`
     border-top: none;
     border-left: none;
     border-right: none;
+    ${({ isAccodianOpen }) =>
+      isAccodianOpen &&
+      css`
+        display: block;
+      `};
   }
 `;
 const LNBItem = styled.li`

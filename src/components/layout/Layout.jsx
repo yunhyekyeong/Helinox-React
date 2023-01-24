@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mediaMax } from "../../util/MediaQurey";
 
 export const Section = styled.section`
-  margin: 100px 0;
+  margin: 120px 0;
 `;
 
 export const Container = styled.div`
