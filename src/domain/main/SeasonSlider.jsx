@@ -63,7 +63,7 @@ function MainSeason() {
             <ProductNameSlider ref={pagingSlickRef} asNavFor={mainSlick} {...Namesettings}>
               <ProductNameSlideItem>
                 Fleece Seat Warmer
-                <br /> for Chair One<span> 플리스 시트워머</span>
+                <br /> for Chair One<span>플리스 시트워머</span>
               </ProductNameSlideItem>
               <ProductNameSlideItem>
                 Tac. Field Cover
@@ -71,11 +71,11 @@ function MainSeason() {
               </ProductNameSlideItem>
               <ProductNameSlideItem>
                 Coyote Tan Seat Warmer
-                <br /> for Chair One<span> 코요테탄 시트워머</span>
+                <br /> for Chair One<span>코요테탄 시트워머</span>
               </ProductNameSlideItem>
               <ProductNameSlideItem>
                 Bandanna Seat Warmer
-                <br /> for Chair One<span> 반다나 시트워머</span>
+                <br /> for Chair One<span>반다나 시트워머</span>
               </ProductNameSlideItem>
             </ProductNameSlider>
           </div>
@@ -98,7 +98,7 @@ function MainSeason() {
 export default MainSeason;
 
 const SeasoSection = styled(Section)`
-  margin: 100px, 0 0 0;
+  margin: 120px, 0 0 0;
 `;
 
 const SeasonWrap = styled.div`
@@ -176,6 +176,7 @@ const ProductNameSlideItem = styled.div`
   span {
     font-size: 20px;
     font-weight: 300;
+    margin-left: 8px;
   }
   ${mediaMax.lg} {
     font-size: 30px;

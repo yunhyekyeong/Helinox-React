@@ -1,21 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { Section, Container } from "../../components/layout/Layout";
-import Button from "../../components/button/Button";
 import BestProductItem from "../product/BestProduct";
+import { mediaMax } from "../../util/MediaQurey";
 
 function BestSeller() {
   return (
     <>
       <BestSelSection>
+        <BestTxt>
+          <h2>Best Seller</h2>
+        </BestTxt>
         <Container>
           <BestSellerWrap>
-            <BestTxt>
-              <h2>Best Seller</h2>
-              <Button styletype="viewmore" fontsize="18px" color="#fff" afterbackground="#fff">
-                view more
-              </Button>
-            </BestTxt>
+            <BestProductItem></BestProductItem>
+            <BestProductItem></BestProductItem>
+            <BestProductItem></BestProductItem>
+            <BestProductItem></BestProductItem>
             <BestProductItem></BestProductItem>
             <BestProductItem></BestProductItem>
             <BestProductItem></BestProductItem>
@@ -38,25 +39,31 @@ const BestSelSection = styled(Section)`
 `;
 
 const BestSellerWrap = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  li {
-    width: 32%;
-    height: 370px;
-    border: 1px solid #ddd;
-    position: relative;
+  counter-reset: numbering;
+  ${mediaMax.xlg} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  ${mediaMax.sm} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  ${mediaMax.xsm} {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
-const BestTxt = styled.li`
+const BestTxt = styled(Container)`
   text-align: center;
   background-color: ${({ theme }) => theme.colors.pointcolor};
   color: ${({ theme }) => theme.colors.bkgcolor};
+  padding: 40px 0;
+  margin-bottom: 10px;
 
   h2 {
     font-size: 40px;
     font-weight: 700;
-    margin-bottom: 60px;
+    /* margin-bottom: 20px; */
   }
 `;
