@@ -10,6 +10,7 @@ import { FaShoppingCart } from "react-icons/fa";
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [accodianOpen, setAccodianOpen] = useState(false);
+
   return (
     <HeaderWrap>
       <Top>
@@ -95,7 +96,9 @@ function Header() {
         </MLog>
         <GNB>
           <GNBItem>
-            <GNBMenu onClick={() => setAccodianOpen(!accodianOpen)}>Outdoor</GNBMenu>
+            <GNBMenu onClick={() => setAccodianOpen(!accodianOpen)}>
+              Outdoor
+            </GNBMenu>
             <LNB isAccodianOpen={accodianOpen}>
               <LNBItem>
                 <Link to="#!">체어</Link>
@@ -494,9 +497,21 @@ const NAV = styled.nav`
   }
   ${mediaMax.sm} {
     width: 80vw;
+    left: -80vw;
+    ${({ isMOpen }) =>
+      isMOpen &&
+      css`
+        left: 0;
+      `};
   }
   ${mediaMax.xsm} {
     width: 100vw;
+    left: -100vw;
+    ${({ isMOpen }) =>
+      isMOpen &&
+      css`
+        left: 0;
+      `};
   }
 `;
 const GNB = styled.ul`
