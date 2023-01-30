@@ -10,8 +10,11 @@ import headermenu from "../../util/constants/constant";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [accodianOpen, setAccodianOpen] = useState(false);
+  const [accodionOpen, setAccodionOpen] = useState(false);
 
+  const isAcoodionOpen = () => {
+    setAccodionOpen(!accodionOpen);
+  };
   return (
     <HeaderWrap>
       <Top>
@@ -97,9 +100,9 @@ function Header() {
         </MLog>
         <GNB>
           {headermenu.map((item) => (
-            <GNBItem key={item.id} onClick={() => setAccodianOpen(!accodianOpen)}>
+            <GNBItem key={item.id} onClick={() => isAcoodionOpen(item.lnbmenu)}>
               <GNBMenu>{item.gnbmenu}</GNBMenu>
-              <LNB isAccodianOpen={accodianOpen}>
+              <LNB isContentOpen={accodionOpen}>
                 {item.lnbmenu.map((lnbitem) => (
                   <LNBItem key={lnbitem.id}>
                     <Link to={lnbitem.url}>{lnbitem.submenu}</Link>
@@ -421,8 +424,9 @@ const LNB = styled.ul`
     border-top: none;
     border-left: none;
     border-right: none;
-    ${({ isAccodianOpen }) =>
-      isAccodianOpen &&
+    transition: 0.2s;
+    ${({ isContentOpen }) =>
+      isContentOpen &&
       css`
         display: block;
       `};

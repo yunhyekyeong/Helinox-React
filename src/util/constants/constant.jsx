@@ -1,6 +1,6 @@
 const headermenu = [
   {
-    id: "0",
+    id: "1",
     gnbmenu: "Outdoor",
     lnbmenu: [
       { id: "1", submenu: "체어", url: "" },
@@ -13,7 +13,7 @@ const headermenu = [
     ],
   },
   {
-    id: "1",
+    id: "2",
     gnbmenu: "Home",
     lnbmenu: [
       { id: "1", submenu: "체어", url: "" },
@@ -22,7 +22,7 @@ const headermenu = [
     ],
   },
   {
-    id: "2",
+    id: "3",
     gnbmenu: "Tactical",
     lnbmenu: [
       { id: "1", submenu: "체어", url: "" },
@@ -35,7 +35,7 @@ const headermenu = [
     ],
   },
   {
-    id: "3",
+    id: "4",
     gnbmenu: "Accessories",
     lnbmenu: [
       { id: "1", submenu: "택티컬 필드 오피스 M 악세서리", url: "" },
@@ -49,7 +49,7 @@ const headermenu = [
     ],
   },
   {
-    id: "4",
+    id: "5",
     gnbmenu: "Special/Limited",
     lnbmenu: [
       { id: "1", submenu: "Leica x Helinox", url: "" },
@@ -64,7 +64,7 @@ const headermenu = [
     ],
   },
   {
-    id: "5",
+    id: "6",
     gnbmenu: "T.E.R.G",
     lnbmenu: [
       { id: "1", submenu: "백팩&멀티백", url: "" },
@@ -76,7 +76,7 @@ const headermenu = [
     ],
   },
   {
-    id: "6",
+    id: "7",
     gnbmenu: "+Information",
     lnbmenu: [
       { id: "1", submenu: "Our story", url: "" },
