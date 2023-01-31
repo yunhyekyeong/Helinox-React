@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { mediaMax } from "../../util/MediaQurey";
 
 const ButtonStyle = {
   moreround: css`
@@ -17,6 +18,9 @@ const ButtonStyle = {
       left: 0;
       width: 130%;
       height: 4px;
+      ${mediaMax.md} {
+        width: 100%;
+      }
     }
   `,
 };
