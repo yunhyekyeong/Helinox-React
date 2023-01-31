@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import logo from "../../assets/img/logo/logo_white.png";
-import { mediaMax, mediaMin } from "../../util/MediaQurey";
+import { mediaMax } from "../../util/MediaQurey";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
@@ -13,14 +13,14 @@ function Header() {
   const [accodionOpen, setAccodionOpen] = useState(false);
 
   const isAcoodionOpen = () => {
-    setAccodionOpen(!accodionOpen);
+    setAccodionOpen((isOpen) => (isOpen ? false : true));
   };
   return (
     <HeaderWrap>
       <Top>
         <Logo>
-          <Link to="/">
-            <img src={logo} alt="" />
+          <Link to="/Helinox-react">
+            <img src={logo} alt="헬리녹스 로고" />
           </Link>
         </Logo>
         <RightWrap>
@@ -102,13 +102,15 @@ function Header() {
           {headermenu.map((item) => (
             <GNBItem key={item.id} onClick={() => isAcoodionOpen(item.lnbmenu)}>
               <GNBMenu>{item.gnbmenu}</GNBMenu>
-              <LNB isContentOpen={accodionOpen}>
-                {item.lnbmenu.map((lnbitem) => (
-                  <LNBItem key={lnbitem.id}>
-                    <Link to={lnbitem.url}>{lnbitem.submenu}</Link>
-                  </LNBItem>
-                ))}
-              </LNB>
+              {item.lnbmenu && accodionOpen ? (
+                <LNB>
+                  {item.lnbmenu.map((lnbitem) => (
+                    <LNBItem key={lnbitem.id}>
+                      <Link to={lnbitem.url}>{lnbitem.submenu}</Link>
+                    </LNBItem>
+                  ))}
+                </LNB>
+              ) : null}
             </GNBItem>
           ))}
         </GNB>
@@ -166,8 +168,15 @@ const RightWrap = styled.ul`
     }
     /* cart */
     &:nth-of-type(4) {
-      ${mediaMin.md} {
-        margin-right: 0;
+      margin-right: 0;
+      ${mediaMax.md} {
+        margin-right: 30px;
+      }
+      ${mediaMax.sm} {
+        margin-right: 16px;
+      }
+      ${mediaMax.xsm} {
+        margin-right: 12px;
       }
     }
     /* Mopen */
@@ -191,9 +200,6 @@ const WebLog = styled.li`
 `;
 
 const Cart = styled.span`
-  /* position: absolute;
-  top: 0;
-  right: -25px; */
   padding: 3px 5px;
   border-radius: 20px;
   background-color: #ff7300;
@@ -316,6 +322,7 @@ const NAV = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
   background-color: ${({ theme }) => theme.colors.bkgcolor};
   padding: 0 50px;
+
   ${mediaMax.md} {
     width: 50vw;
     height: 100vh;
@@ -324,15 +331,15 @@ const NAV = styled.nav`
     top: 60px;
     left: -50vw;
     transition: 0.4s;
+    border-right: 1px solid ${({ theme }) => theme.colors.brightgray};
+    border-bottom: none;
     ${({ isMOpen }) =>
       isMOpen &&
       css`
         left: 0;
       `};
-
-    border-right: 1px solid ${({ theme }) => theme.colors.brightgray};
-    border-bottom: none;
   }
+
   ${mediaMax.sm} {
     width: 80vw;
     left: -80vw;
@@ -342,6 +349,7 @@ const NAV = styled.nav`
         left: 0;
       `};
   }
+
   ${mediaMax.xsm} {
     width: 100vw;
     left: -100vw;
@@ -352,12 +360,14 @@ const NAV = styled.nav`
       `};
   }
 `;
+
 const GNB = styled.ul`
   display: flex;
   ${mediaMax.md} {
     flex-direction: column;
   }
 `;
+
 const GNBItem = styled.li`
   ${({ theme }) => theme.common.flexLeft};
   position: relative;
@@ -366,9 +376,11 @@ const GNBItem = styled.li`
   ${({ theme }) => theme.fontSize.lgfont};
   font-weight: 500;
   cursor: pointer;
+
   &:last-child {
     margin-right: 0;
   }
+
   &:hover {
     &::after {
       bottom: 0;
@@ -378,12 +390,10 @@ const GNBItem = styled.li`
       background-color: ${({ theme }) => theme.colors.pointcolor};
       transition: 0.3s;
     }
+
     /* LNB 공통 */
     & > ul {
       display: block;
-      ${mediaMax.md} {
-        display: none;
-      }
     }
   }
 
@@ -398,11 +408,14 @@ const GNBItem = styled.li`
 
 const GNBMenu = styled.span`
   ${mediaMax.md} {
+    display: flex;
+    justify-content: space-between;
     ${({ theme }) => theme.common.flexLeft};
     width: 100%;
     height: 40px;
     padding: 0 16px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
+    background-color: ${({ theme }) => theme.colors.bkgcolor};
   }
 `;
 
@@ -424,24 +437,21 @@ const LNB = styled.ul`
     border-top: none;
     border-left: none;
     border-right: none;
-    transition: 0.2s;
-    ${({ isContentOpen }) =>
-      isContentOpen &&
-      css`
-        display: block;
-      `};
   }
 `;
+
 const LNBItem = styled.li`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.bkgcolor};
   border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
   line-height: 2;
   cursor: pointer;
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.pointcolor};
     color: ${({ theme }) => theme.colors.bkgcolor};
   }
+
   /* Link */
   a {
     display: block;
@@ -455,10 +465,12 @@ const LNBItem = styled.li`
     border-bottom: none;
     background-color: ${({ theme }) => theme.colors.brightgray};
     line-height: 2.5;
+
     &:hover {
       background-color: ${({ theme }) => theme.colors.brightgray};
       color: ${({ theme }) => theme.colors.pointcolor};
     }
+
     /* Link */
     a {
       ${({ theme }) => theme.fontSize.mdfont};
