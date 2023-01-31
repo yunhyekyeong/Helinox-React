@@ -93,6 +93,9 @@ const LookbookWrap = styled.div`
   ${mediaMax.lg} {
     height: 280px;
   }
+  @media (max-width: 912px) {
+    height: 256px;
+  }
   ${mediaMax.md} {
     flex-direction: column-reverse;
     height: 100%;
@@ -103,8 +106,39 @@ const ImgBoxSlider = styled(Slider)`
   width: 50%;
   height: 100%;
   overflow: hidden;
+
   ${mediaMax.md} {
     width: 100%;
+  }
+  @media (max-width: 768px) {
+    height: 468px;
+  }
+  @media (max-width: 712px) {
+    height: 432px;
+  }
+  ${mediaMax.sm} {
+    height: 250px;
+  }
+  @media (max-width: 414px) {
+    height: 243px;
+  }
+  @media (max-width: 412px) {
+    height: 241px;
+  }
+  @media (max-width: 390px) {
+    height: 228px;
+  }
+  @media (max-width: 375px) {
+    height: 218px;
+  }
+  @media (max-width: 360px) {
+    height: 209px;
+  }
+  @media (max-width: 320px) {
+    height: 183px;
+  }
+  @media (max-width: 280px) {
+    height: 158px;
   }
 `;
 
