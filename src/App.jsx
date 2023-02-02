@@ -7,7 +7,7 @@ import GlobalStyle from "./style/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./style/theme";
 import MainHome from "./page/main/MainHomePage";
-import Commonshop from "./page/shop/CommonShop";
+import OutdoorChair from "./page/outdoor/OutdoorChairPage";
 import { mediaMax } from "./util/MediaQurey";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <Main>
           <Routes>
             <Route path="/Helinox-react" element={<MainHome />}></Route>
-            <Route path="/Helinox-react/shop" element={<Commonshop />}></Route>
+            <Route path="/Helinox-react/outdoorchair" element={<OutdoorChair />}></Route>
           </Routes>
         </Main>
         <Footer />

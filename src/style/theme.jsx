@@ -25,6 +25,7 @@ const colors = {
   maingray: "#aaa",
   lightgray: "#ddd",
   brightgray: "#eee",
+  likecolor: "#FF7300",
 };
 
 const common = {

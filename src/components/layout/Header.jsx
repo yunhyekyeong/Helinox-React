@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import logo from "../../assets/img/logo/logo_white.png";
 import { mediaMax } from "../../util/MediaQurey";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 import headermenu from "../../util/constants/constant";
 
@@ -12,9 +12,9 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [accodionOpen, setAccodionOpen] = useState(false);
 
-  const isAcoodionOpen = () => {
-    setAccodionOpen((isOpen) => (isOpen ? false : true));
-  };
+  // const isAcoodionOpen = () => {
+  //   setAccodionOpen(!accodionOpen);
+  // };
   return (
     <HeaderWrap>
       <Top>
@@ -99,10 +99,13 @@ function Header() {
           </CS>
         </MLog>
         <GNB>
-          {headermenu.map((item) => (
-            <GNBItem key={item.id} onClick={() => isAcoodionOpen(item.lnbmenu)}>
-              <GNBMenu>{item.gnbmenu}</GNBMenu>
-              {item.lnbmenu && accodionOpen ? (
+          {headermenu.map((item, index) => (
+            <GNBItem key={item.id} onClick={() => setAccodionOpen(!accodionOpen)}>
+              <GNBMenu>
+                {item.gnbmenu}
+                <Micon key={index}>{accodionOpen ? <FiChevronDown /> : <FiChevronUp />}</Micon>
+              </GNBMenu>
+              {accodionOpen && (
                 <LNB>
                   {item.lnbmenu.map((lnbitem) => (
                     <LNBItem key={lnbitem.id}>
@@ -110,7 +113,7 @@ function Header() {
                     </LNBItem>
                   ))}
                 </LNB>
-              ) : null}
+              )}
             </GNBItem>
           ))}
         </GNB>
@@ -416,6 +419,13 @@ const GNBMenu = styled.span`
     padding: 0 16px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
     background-color: ${({ theme }) => theme.colors.bkgcolor};
+  }
+`;
+
+const Micon = styled.span`
+  display: none;
+  ${mediaMax.md} {
+    display: block;
   }
 `;
 

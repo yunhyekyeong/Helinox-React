@@ -3,7 +3,7 @@ const headermenu = [
     id: "1",
     gnbmenu: "Outdoor",
     lnbmenu: [
-      { id: "1", submenu: "체어", url: "#!" },
+      { id: "1", submenu: "체어", conponent: "OutdoorChairPage", url: "/Helinox-react/outdoorchair" },
       { id: "2", submenu: "코트", url: "#!" },
       { id: "3", submenu: "테이블", url: "#!" },
       { id: "4", submenu: "텐트", url: "#!" },
