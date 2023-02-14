@@ -16,3 +16,7 @@ export const Container = styled.div`
     padding: 0 16px;
   }
 `;
+
+export const ProductPgSection = styled.section`
+  margin: 200px 0;
+`;

@@ -37,7 +37,7 @@ const SpecialContainer = styled(Container)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
   img {
     ${mediaMax.sm} {

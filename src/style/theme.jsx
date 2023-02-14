@@ -19,13 +19,14 @@ const fontSize = {
 };
 
 const colors = {
-  bkgcolor: "#fff",
-  pointcolor: "#000",
+  white: "#fff",
+  black: "#000",
   deepgray: "#333",
   maingray: "#aaa",
   lightgray: "#ddd",
   brightgray: "#eee",
-  likecolor: "#FF7300",
+  orange: "#FF7300",
+  aqua: "#03c2fc",
 };
 
 const common = {
@@ -43,6 +44,12 @@ const common = {
     justify-content: space-between;
     align-items: center;
     `,
+  AfterCommon: `
+    content:"";
+    display:block;
+    position:absolute;
+
+  `,
 };
 
 const theme = {

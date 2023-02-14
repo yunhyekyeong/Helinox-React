@@ -191,14 +191,14 @@ const TxtBox = css`
 `;
 const RightTxtBox = styled.div`
   ${TxtBox}
-  background-color: ${({ theme }) => theme.colors.pointcolor};
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   Button {
-    border: 1px solid ${({ theme }) => theme.colors.bkgcolor};
-    color: ${({ theme }) => theme.colors.bkgcolor};
+    border: 1px solid ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
   }
   &::after {
-    background-color: ${({ theme }) => theme.colors.pointcolor};
+    background-color: ${({ theme }) => theme.colors.black};
     left: -15px;
   }
 `;

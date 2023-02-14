@@ -379,7 +379,7 @@ const ArrowBtnNext = styled.button`
   }
   svg {
     font-size: 30px;
-    color: ${({ theme }) => theme.colors.pointcolor};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 
@@ -392,6 +392,6 @@ const ArrowBtnPrev = styled.button`
   }
   svg {
     font-size: 30px;
-    color: ${({ theme }) => theme.colors.pointcolor};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import logo from "../../assets/img/logo/logo_white.png";
 import { mediaMax } from "../../util/MediaQurey";
 import { BsFillTelephoneFill } from "react-icons/bs";
-import { FiSearch, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 import headermenu from "../../util/constants/constant";
 
@@ -99,12 +99,9 @@ function Header() {
           </CS>
         </MLog>
         <GNB>
-          {headermenu.map((item, index) => (
-            <GNBItem key={item.id} onClick={() => setAccodionOpen(!accodionOpen)}>
-              <GNBMenu>
-                {item.gnbmenu}
-                <Micon key={index}>{accodionOpen ? <FiChevronDown /> : <FiChevronUp />}</Micon>
-              </GNBMenu>
+          {headermenu.map((item) => (
+            <GNBItem key={item.id}>
+              <GNBMenu onClick={() => setAccodionOpen(!accodionOpen)}>{item.gnbmenu}</GNBMenu>
               {accodionOpen && (
                 <LNB>
                   {item.lnbmenu.map((lnbitem) => (
@@ -136,8 +133,8 @@ const Top = styled.div`
   ${({ theme }) => theme.common.flexBtween};
   width: 100%;
   height: 60px;
-  background-color: ${({ theme }) => theme.colors.pointcolor};
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   padding: 0 50px;
   position: relative;
   ${mediaMax.md} {
@@ -205,10 +202,10 @@ const WebLog = styled.li`
 const Cart = styled.span`
   padding: 3px 5px;
   border-radius: 20px;
-  background-color: #ff7300;
+  background-color: ${({ theme }) => theme.colors.aqua};
   font-size: 12px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
   margin-left: 4px;
 `;
@@ -228,7 +225,7 @@ const MOpen = styled.li`
     width: 100%;
     height: 2px;
     border-radius: 10px;
-    background-color: ${({ theme }) => theme.colors.bkgcolor};
+    background-color: ${({ theme }) => theme.colors.white};
     position: absolute;
     &:nth-of-type(1) {
       top: 0;
@@ -289,8 +286,8 @@ const LogBtn = styled.div`
     padding: 10px 16px;
     font-size: 16px;
     &:nth-of-type(1) {
-      background-color: ${({ theme }) => theme.colors.pointcolor};
-      color: ${({ theme }) => theme.colors.bkgcolor};
+      background-color: ${({ theme }) => theme.colors.black};
+      color: ${({ theme }) => theme.colors.white};
     }
     &:nth-of-type(2) {
       border: 1px solid ${({ theme }) => theme.colors.lightgray};
@@ -310,8 +307,8 @@ const CS = styled.li`
       }
       span {
         font-size: 10px;
-        background-color: ${({ theme }) => theme.colors.pointcolor};
-        color: ${({ theme }) => theme.colors.bkgcolor};
+        background-color: ${({ theme }) => theme.colors.black};
+        color: ${({ theme }) => theme.colors.white};
         padding: 5px 6px;
         border-radius: 50%;
         margin-right: 6px;
@@ -323,7 +320,7 @@ const CS = styled.li`
 // 하단 메뉴
 const NAV = styled.nav`
   border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
-  background-color: ${({ theme }) => theme.colors.bkgcolor};
+  background-color: ${({ theme }) => theme.colors.white};
   padding: 0 50px;
 
   ${mediaMax.md} {
@@ -390,7 +387,7 @@ const GNBItem = styled.li`
       left: 0;
       width: 100%;
       height: 4px;
-      background-color: ${({ theme }) => theme.colors.pointcolor};
+      background-color: ${({ theme }) => theme.colors.black};
       transition: 0.3s;
     }
 
@@ -418,16 +415,16 @@ const GNBMenu = styled.span`
     height: 40px;
     padding: 0 16px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
-    background-color: ${({ theme }) => theme.colors.bkgcolor};
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;
 
-const Micon = styled.span`
-  display: none;
-  ${mediaMax.md} {
-    display: block;
-  }
-`;
+// const Micon = styled.span`
+//   display: none;
+//   ${mediaMax.md} {
+//     display: block;
+//   }
+// `;
 
 const LNB = styled.ul`
   display: none;
@@ -452,14 +449,14 @@ const LNB = styled.ul`
 
 const LNBItem = styled.li`
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.bkgcolor};
+  background-color: ${({ theme }) => theme.colors.white};
   border-bottom: 1px solid ${({ theme }) => theme.colors.brightgray};
   line-height: 2;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.pointcolor};
-    color: ${({ theme }) => theme.colors.bkgcolor};
+    background-color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.white};
   }
 
   /* Link */
@@ -478,7 +475,7 @@ const LNBItem = styled.li`
 
     &:hover {
       background-color: ${({ theme }) => theme.colors.brightgray};
-      color: ${({ theme }) => theme.colors.pointcolor};
+      color: ${({ theme }) => theme.colors.black};
     }
 
     /* Link */

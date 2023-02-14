@@ -64,8 +64,8 @@ const BestProduct = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 6px 0 6px 0;
-    background-color: ${({ theme }) => theme.colors.pointcolor};
-    color: ${({ theme }) => theme.colors.bkgcolor};
+    background-color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.white};
     counter-increment: numbering;
     content: counter(numbering);
     ${mediaMax.sm} {
@@ -114,12 +114,12 @@ const Caption = styled.div`
   width: 100%;
   height: 80px;
   padding: 16px;
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  color: ${({ theme }) => theme.colors.white};
   transition: 0.4s;
   ${mediaMax.md} {
     position: static;
     height: auto;
-    color: ${({ theme }) => theme.colors.pointcolor};
+    color: ${({ theme }) => theme.colors.black};
     padding: 10px;
   }
   &::before {
@@ -161,7 +161,7 @@ const ProductPrice = styled.span`
   font-weight: 300;
   margin-right: 8px;
   ${mediaMax.md} {
-    color: ${({ theme }) => theme.colors.pointcolor};
+    color: ${({ theme }) => theme.colors.black};
   }
   strong {
     ${({ theme }) => theme.fontSize.mdfont};

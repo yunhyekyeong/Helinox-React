@@ -114,7 +114,7 @@ const SlideTxt = styled.div`
   transform: translate(-50%, -50%);
   z-index: 2;
   text-align: center;
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  color: ${({ theme }) => theme.colors.white};
   ${mediaMax.lg} {
     width: calc(100% - 120px);
   }
@@ -163,7 +163,7 @@ const ArrowBtnNext = styled.button`
   }
   svg {
     font-size: 30px;
-    color: ${({ theme }) => theme.colors.bkgcolor};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -176,6 +176,6 @@ const ArrowBtnPrev = styled.button`
   }
   svg {
     font-size: 30px;
-    color: ${({ theme }) => theme.colors.bkgcolor};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;

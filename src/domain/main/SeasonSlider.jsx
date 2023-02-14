@@ -236,6 +236,6 @@ const TxtBox = styled.div`
   }
 `;
 const TopTxt = styled.div`
-  color: ${({ theme }) => theme.colors.bkgcolor};
-  -webkit-text-stroke: 2px ${({ theme }) => theme.colors.pointcolor};
+  color: ${({ theme }) => theme.colors.white};
+  -webkit-text-stroke: 2px ${({ theme }) => theme.colors.black};
 `;

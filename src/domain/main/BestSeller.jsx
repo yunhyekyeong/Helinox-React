@@ -56,8 +56,8 @@ const BestSellerWrap = styled.div`
 
 const BestTxt = styled(Container)`
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.pointcolor};
-  color: ${({ theme }) => theme.colors.bkgcolor};
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   padding: 40px 0;
   margin-bottom: 10px;
 
