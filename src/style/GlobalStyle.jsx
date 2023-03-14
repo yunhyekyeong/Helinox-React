@@ -105,11 +105,19 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
     line-height: 1;
-    min-height: 100vh;
-    min-height: calc(var(--vh) * 100);
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(
       safe-area-inset-bottom) env(safe-area-inset-left);
     }
+    @media(max-width:425px) {
+        body {
+            height: 100vh;
+            height: fill-available;
+        }
+        @supports (-webkit-touch-callout: none){
+            height: -webkit-fill-available;
+        }
+    }
+
     ol,
     ul,
     li {

@@ -7,15 +7,11 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 import headermenu from "../../util/constants/constant";
-import isMobile from "../../util/utils";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [accodionOpen, setAccodionOpen] = useState(false);
 
-  const onAccodion = () => {
-    setAccodionOpen(accodionOpen);
-  };
   // const isAcoodionOpen = () => {
   //   setAccodionOpen(!accodionOpen);
   // };
@@ -105,8 +101,7 @@ function Header() {
         <GNB>
           {headermenu.map((item) => (
             <GNBItem key={item.id}>
-              {/* onClick={() => setAccodionOpen(!accodionOpen)} */}
-              <GNBMenu onClick={!isMobile ? onAccodion : undefined}>{item.gnbmenu}</GNBMenu>
+              <GNBMenu onClick={() => setAccodionOpen(!accodionOpen)}>{item.gnbmenu}</GNBMenu>
               {accodionOpen && (
                 <LNB>
                   {item.lnbmenu.map((lnbitem) => (

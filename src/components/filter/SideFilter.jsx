@@ -81,7 +81,7 @@ function SideFilter() {
 export default SideFilter;
 
 const SideFilterWrap = styled.aside`
-  width: 15%;
+  width: 20%;
 `;
 
 const FilterMenu = styled.ul`
