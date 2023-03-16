@@ -12,21 +12,15 @@ import isMobile from "../../util/utils";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  // const [accodionIndex, setAccodionIndex] = useState(1);
-  // const [accodionOpen, setAccodionOpen] = useState(false);
-  // const onAccodion = (headermenu) => {
-  //   if (setAccodionIndex(headermenu.id)) {
-  //     setAccodionOpen(!accodionOpen);
-  //     return;
-  //   }
-  // };
+  const [accodionOpen, setAccodionOpen] = useState([]);
 
-  const [accodionOpen, setAccodionOpen] = useState(false);
-  const onAccodion = (idx) => {
-    const newArr = Array(idx.length).fill(false);
-    newArr[idx] = true;
-    setAccodionOpen(newArr);
-  };
+  // 버튼 하나만 선택
+  // const [accodionOpen, setAccodionOpen] = useState(false);
+  // const onAccodion = (idx) => {
+  //   const newArr = Array(idx.length).fill(false);
+  //   newArr[idx] = true;
+  //   setAccodionOpen(newArr);
+  // };
 
   return (
     <HeaderWrap>
@@ -112,16 +106,22 @@ function Header() {
           </CS>
         </MLog>
         <GNB>
-          {headermenu.map((item, index) => (
+          {headermenu.map((item) => (
             <GNBItem key={item.id}>
-              <GNBMenu onClick={isMobile ? () => onAccodion(index) : undefined}>
+              <GNBMenu
+                onClick={
+                  isMobile
+                    ? () => (!accodionOpen.includes(item.id) ? setAccodionOpen((accodionOpen) => [...accodionOpen, item.id]) : setAccodionOpen(accodionOpen.filter((li) => li !== item.id)))
+                    : undefined
+                }
+              >
                 {item.gnbmenu}
-                <Micon isIcon={accodionOpen[index]}>
+                <Micon isIcon={accodionOpen.includes(item.id)}>
                   <TfiAngleDown />
                 </Micon>
               </GNBMenu>
               {item.lnbmenu && (
-                <LNB isAccodionOpen={accodionOpen[index]}>
+                <LNB isAccodionOpen={accodionOpen.includes(item.id)}>
                   {item.lnbmenu.map((lnbitem) => (
                     <LNBItem key={lnbitem.id}>
                       <Link to={lnbitem.url}>{lnbitem.submenu}</Link>
