@@ -6,19 +6,28 @@ import { mediaMax } from "../../util/MediaQurey";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
+import { TfiAngleDown } from "react-icons/tfi";
 import headermenu from "../../util/constants/constant";
 import isMobile from "../../util/utils";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [accodionOpen, setAccodionOpen] = useState(false);
-
-  const onAccodion = () => {
-    setAccodionOpen(accodionOpen);
-  };
-  // const isAcoodionOpen = () => {
-  //   setAccodionOpen(!accodionOpen);
+  // const [accodionIndex, setAccodionIndex] = useState(1);
+  // const [accodionOpen, setAccodionOpen] = useState(false);
+  // const onAccodion = (headermenu) => {
+  //   if (setAccodionIndex(headermenu.id)) {
+  //     setAccodionOpen(!accodionOpen);
+  //     return;
+  //   }
   // };
+
+  const [accodionOpen, setAccodionOpen] = useState(false);
+  const onAccodion = (idx) => {
+    const newArr = Array(idx.length).fill(false);
+    newArr[idx] = true;
+    setAccodionOpen(newArr);
+  };
+
   return (
     <HeaderWrap>
       <Top>
@@ -103,12 +112,16 @@ function Header() {
           </CS>
         </MLog>
         <GNB>
-          {headermenu.map((item) => (
+          {headermenu.map((item, index) => (
             <GNBItem key={item.id}>
-              {/* onClick={() => setAccodionOpen(!accodionOpen)} */}
-              <GNBMenu onClick={!isMobile ? onAccodion : undefined}>{item.gnbmenu}</GNBMenu>
-              {accodionOpen && (
-                <LNB>
+              <GNBMenu onClick={isMobile ? () => onAccodion(index) : undefined}>
+                {item.gnbmenu}
+                <Micon isIcon={accodionOpen[index]}>
+                  <TfiAngleDown />
+                </Micon>
+              </GNBMenu>
+              {item.lnbmenu && (
+                <LNB isAccodionOpen={accodionOpen[index]}>
                   {item.lnbmenu.map((lnbitem) => (
                     <LNBItem key={lnbitem.id}>
                       <Link to={lnbitem.url}>{lnbitem.submenu}</Link>
@@ -424,12 +437,17 @@ const GNBMenu = styled.span`
   }
 `;
 
-// const Micon = styled.span`
-//   display: none;
-//   ${mediaMax.md} {
-//     display: block;
-//   }
-// `;
+const Micon = styled.span`
+  display: none;
+  ${mediaMax.md} {
+    display: block;
+    transform: ${(props) => (props.isIcon ? "rotate(180deg)" : "rotate(0deg)")};
+    transition: 0.4s;
+    svg {
+      font-size: 14px;
+    }
+  }
+`;
 
 const LNB = styled.ul`
   display: none;
@@ -441,14 +459,15 @@ const LNB = styled.ul`
   border-top: 1px solid ${({ theme }) => theme.colors.brightgray};
   border-left: 1px solid ${({ theme }) => theme.colors.brightgray};
   border-right: 1px solid ${({ theme }) => theme.colors.brightgray};
-
   ${mediaMax.md} {
     position: static;
+    overflow: hidden;
     width: 100%;
     background-color: ${({ theme }) => theme.colors.brightgray};
     border-top: none;
     border-left: none;
     border-right: none;
+    height: ${(props) => (props.isAccodionOpen ? "auto" : "0")};
   }
 `;
 
