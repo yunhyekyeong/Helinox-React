@@ -21,6 +21,7 @@ function Header() {
   //   newArr[idx] = true;
   //   setAccodionOpen(newArr);
   // };
+  // isAccodionOpen={accodionOpen.[item.id]
 
   return (
     <HeaderWrap>
