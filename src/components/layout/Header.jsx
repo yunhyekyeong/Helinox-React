@@ -7,7 +7,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { FaShoppingCart } from "react-icons/fa";
 import { TfiAngleDown } from "react-icons/tfi";
-import headermenu from "../../util/constants/constant";
+import { HEADER_MENU } from "../../util/constants/constant";
 import isMobile from "../../util/utils";
 
 function Header() {
@@ -107,7 +107,7 @@ function Header() {
           </CS>
         </MLog>
         <GNB>
-          {headermenu.map((item) => (
+          {HEADER_MENU.map((item) => (
             <GNBItem key={item.id}>
               <GNBMenu
                 onClick={
