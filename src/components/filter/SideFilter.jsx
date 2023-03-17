@@ -2,43 +2,30 @@ import React from "react";
 import styled from "styled-components";
 import CheckBox from "../checkbox/CheckBox";
 import ColorFilterBox from "./ColorFilter";
-import { PRODUCT_TYPE } from "../../util/constants/constant";
+import { FILTER_PRODUCT_TYPE, FILTER_COLOR, FILTER_SIZE } from "../../util/constants/constant";
 
 function SideFilter() {
   return (
     <>
       <SideFilterWrap>
         <FilterMenu>
-          {PRODUCT_TYPE.mpa((item) => (
+          {FILTER_PRODUCT_TYPE.map((item) => (
             <li key={item.id}>
               <CheckBox>{item.type}</CheckBox>
             </li>
           ))}
         </FilterMenu>
         <FilterColor>
-          <ColorFilterBox backgroundcolor={"black"} />
-          <ColorFilterBox backgroundcolor={"white"} />
-          <ColorFilterBox backgroundcolor={"gray"} />
-          <ColorFilterBox backgroundcolor={"burlywood"} />
-          <ColorFilterBox backgroundcolor={"tan"} />
-          <ColorFilterBox backgroundcolor={"red"} />
-          <ColorFilterBox backgroundcolor={"blue"} />
-          <ColorFilterBox backgroundcolor={"green"} />
-          <ColorFilterBox backgroundcolor={"yellow"} />
+          {FILTER_COLOR.map((item) => (
+            <ColorFilterBox backgroundcolor={item.color} />
+          ))}
         </FilterColor>
         <FilterMenu>
-          <li>
-            <CheckBox>S</CheckBox>
-          </li>
-          <li>
-            <CheckBox>M</CheckBox>
-          </li>
-          <li>
-            <CheckBox>L</CheckBox>
-          </li>
-          <li>
-            <CheckBox>XL</CheckBox>
-          </li>
+          {FILTER_SIZE.map((item) => (
+            <li>
+              <CheckBox>{item.size}</CheckBox>
+            </li>
+          ))}
         </FilterMenu>
       </SideFilterWrap>
     </>
