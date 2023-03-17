@@ -1,5 +1,5 @@
-export const HEADER_MENU =
-  ({
+export const HEADER_MENU = [
+  {
     id: 0,
     gnbmenu: "Outdoor",
     lnbmenu: [
@@ -87,10 +87,11 @@ export const HEADER_MENU =
       { id: 6, submenu: "A/S", url: "#!" },
       { id: 7, submenu: "HCC", url: "#!" },
     ],
-  });
+  },
+];
 
-export const PRODUCT_TYPE =
-  ({
+export const FILTER_PRODUCT_TYPE = [
+  {
     id: 0,
     type: "체어원",
   },
@@ -137,11 +138,63 @@ export const PRODUCT_TYPE =
   {
     id: 11,
     type: "카페체어",
-  });
+  },
+];
 
-const constant = {
-  HEADER_MENU,
-  PRODUCT_TYPE,
-};
+export const FILTER_COLOR = [
+  {
+    id: 0,
+    color: "black",
+  },
+  {
+    id: 1,
+    color: "white",
+  },
+  {
+    id: 2,
+    color: "gray",
+  },
+  {
+    id: 3,
+    color: "burlywood",
+  },
+  {
+    id: 4,
+    color: "tan",
+  },
+  {
+    id: 5,
+    color: "red",
+  },
+  {
+    id: 6,
+    color: "blue",
+  },
+  {
+    id: 7,
+    color: "green",
+  },
+  {
+    id: 8,
+    color: "yellow",
+  },
+];
 
-export default constant;
+export const FILTER_SIZE = [
+  {
+    id: 0,
+    size: "S",
+  },
+  {
+    id: 1,
+    size: "M",
+  },
+  {
+    id: 2,
+    size: "L",
+  },
+  {
+    id: 3,
+    size: "XL",
+  },
+];
