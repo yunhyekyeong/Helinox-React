@@ -2,19 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { BsCheck } from "react-icons/bs";
 
-function CheckBox({ id, checked, children }) {
+function CheckBox({ id, checked, children, onChange }) {
   return (
     <>
       <CheckWrap>
         <CheckInner>
           <CheckLabel checked={checked} htmlFor={id}>
-            <CheckInput type="checkbox" id={id} checked={checked} />
-            <CheckIcon>
+            <CheckInput type="checkbox" id={id} checked={checked} onChange={onChange} />
+            <CheckIcon checked={checked}>
               <BsCheck />
             </CheckIcon>
           </CheckLabel>
         </CheckInner>
-        <CheckTxt checked={checked}>{children}</CheckTxt>
+        <CheckTxt>{children}</CheckTxt>
       </CheckWrap>
     </>
   );
