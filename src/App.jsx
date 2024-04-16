@@ -19,8 +19,8 @@ function App() {
         <Header />
         <Main>
           <Routes>
-            <Route path="/Helinox-react" element={<MainHome />}></Route>
-            <Route path="/Helinox-react/outdoorchair" element={<OutdoorChair />}></Route>
+            <Route path="/Helinox-React" element={<MainHome />}></Route>
+            <Route path="/Helinox-React/outdoorchair" element={<OutdoorChair />}></Route>
           </Routes>
         </Main>
         <Footer />

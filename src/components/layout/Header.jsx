@@ -27,7 +27,7 @@ function Header() {
     <HeaderWrap>
       <Top>
         <Logo>
-          <Link to="/Helinox-react">
+          <Link to="/Helinox-React">
             <img src={logo} alt="헬리녹스 로고" />
           </Link>
         </Logo>
@@ -112,7 +112,15 @@ function Header() {
               <GNBMenu
                 onClick={
                   isMobile
-                    ? () => (!accodionOpen.includes(item.id) ? setAccodionOpen((accodionOpen) => [...accodionOpen, item.id]) : setAccodionOpen(accodionOpen.filter((li) => li !== item.id)))
+                    ? () =>
+                        !accodionOpen.includes(item.id)
+                          ? setAccodionOpen((accodionOpen) => [
+                              ...accodionOpen,
+                              item.id,
+                            ])
+                          : setAccodionOpen(
+                              accodionOpen.filter((li) => li !== item.id)
+                            )
                     : undefined
                 }
               >
